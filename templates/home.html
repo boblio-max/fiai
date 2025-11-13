@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Quantum Quant{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="hero-section">
+        <h1 class="hero-title animate-fade-in-down">Quantum Quant</h1>
+        <h2 class="hero-subtitle animate-fade-in-up">
+            Today's Focus: <strong>{{ stock_name }} ({{ ticker }})</strong>
+        </h2>
+        <p class="hero-instruction animate-fade-in-up-delay">
+            Click a peak on the graph to explore a trading strategy.
+        </p>
+    </div>
+    
+    <div class="chart-container-large animate-fade-in">
+        <canvas id="homeStockChart"></canvas>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    window.homeChartData = {{ chart_data_json | safe }};
+    window.homePeaksData = {{ peaks_json | safe }};
+</script>
+{% endblock %}
