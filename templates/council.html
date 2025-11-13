@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Quant Council | Quantum Quant{% endblock %}
+
+{% block content %}
+<div class="council-container">
+    
+    <div class="algo-header animate-fade-in-down">
+        <h1 class="page-title">The Quant Council</h1>
+        <p class="strategy-description">
+            Run all 10 quantitative models on a single ticker. The Council aggregates their votes to form a collective, AI-powered decision.
+        </p>
+    </div>
+
+    <div class="card input-card animate-fade-in">
+        <h3 class="card-title">Convene the Council</h3>
+        <div class="form-group">
+            <label for="councilTicker">Ticker</label>
+            <input type="text" id="councilTicker" class="ticker-input" placeholder="e.g., NVDA">
+        </div>
+        <button id="runCouncilBtn" class="btn btn-primary">
+            Convene
+        </button>
+    </div>
+
+    <div id="councilResultsArea" class="results-container" style="display: none;">
+        
+        <div id="councilLoadingSpinner" class="spinner" style="display: none;">
+            <div class="spinner-inner"></div>
+        </div>
+
+        <div id="councilErrorMessage" class="error-box" style="display: none;"></div>
+
+        <div id="councilResultContent" style="display: none;">
+            
+            <div class="card recommendation-card">
+                <h3 class="card-title">Council's Collective Vote</h3>
+                <div id="councilVoteBox" class="recommendation-box">
+                    </div>
+            </div>
+
+            <div class="card breakdown-card">
+                <h3 class="card-title">Vote Breakdown</h3>
+                <div class="vote-lists">
+                    <div class="vote-column">
+                        <h4 class="vote-title buy">Buy (<span id="buyCount">0</span>)</h4>
+                        <ul id="buyList"></ul>
+                    </div>
+                    <div class="vote-column">
+                        <h4 class="vote-title sell">Sell (<span id="sellCount">0</span>)</h4>
+                        <ul id="sellList"></ul>
+                    </div>
+                    <div class="vote-column">
+                        <h4 class="vote-title hold">Hold (<span id="holdCount">0</span>)</h4>
+                        <ul id="holdList"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card prompt-card">
+                <h3 class="card-title">AI Decision Prompt</h3>
+                <p>Copy this prompt into an advanced AI (like Claude 3) for a full generative investment thesis.</p>
+                <textarea id="aiPromptTextarea" class="prompt-textarea" readonly></textarea>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
