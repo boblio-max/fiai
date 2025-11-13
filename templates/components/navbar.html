@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a class="nav-logo" href="{{ url_for('home') }}">
+            <span class="logo-text">🔱 QQ</span>
+        </a>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link drop-btn">Algorithms ▾</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('algorithm_page', strategy_name='momentum') }}">Momentum</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='mean_reversion') }}">Mean Reversion</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='stat_arb') }}">Statistical Arbitrage</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='ml_predictive') }}">ML Prediction</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='volatility_forecast') }}">Volatility Forecast</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='reinforcement') }}">Reinforcement Learning</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='factor_investing') }}">Factor Investing</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='market_making') }}">Market Making</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='sentiment') }}">Sentiment Analysis</a>
+                    <a href="{{ url_for('algorithm_page', strategy_name='mean_variance_opt') }}">Portfolio Optimization</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('council_page') }}" class="nav-link">Council</a>
+            </li>
+        </ul>
+    </div>
+</nav>
