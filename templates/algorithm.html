@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ strategy.title }} | Quantum Quant{% endblock %}
+
+{% block content %}
+<div class="algorithm-container">
+    
+    <div class="algo-header animate-fade-in-down">
+        <h1 class="page-title">{{ strategy.title }}</h1>
+        <p class="strategy-description">{{ strategy.description }}</p>
+    </div>
+
+    <div class="card input-card animate-fade-in">
+        <h3 class="card-title">Run Analysis</h3>
+        <div class="form-group">
+            <label for="ticker1">Ticker {% if strategy.tickers_required == 2 %}1{% endif %}</label>
+            <input type="text" id="ticker1" class="ticker-input" placeholder="e.g., AAPL">
+        </div>
+        
+        {% if strategy.tickers_required == 2 %}
+        <div class="form-group">
+            <label for="ticker2">Ticker 2</label>
+            <input type="text" id="ticker2" class="ticker-input" placeholder="e.g., MSFT">
+        </div>
+        {% endif %}
+        
+        <button id="runAlgorithmBtn" class="btn btn-primary" data-strategy="{{ strategy_name }}">
+            Run Algorithm
+        </button>
+    </div>
+
+    <div id="resultsArea" class="results-container" style="display: none;">
+        
+        <div id="loadingSpinner" class="spinner" style="display: none;">
+            <div class="spinner-inner"></div>
+        </div>
+
+        <div id="errorMessage" class="error-box" style="display: none;"></div>
+
+        <div id="resultContent" style="display: none;">
+            <div class="card recommendation-card">
+                <h3 class="card-title">Recommendation</h3>
+                <div id="recommendationBox" class="recommendation-box">
+                    </div>
+            </div>
+
+            <div class="card summary-card">
+                <h3 class="card-title">Analysis & Interpretation</h3>
+                <p id="resultSummary"></p>
+                <h4 class="math-title">Strategy Logic</h4>
+                <p class="math-explanation">{{ strategy.math }}</p>
+            </div>
+
+            <div class="card chart-card">
+                <h3 class="card-title">Visualization</h3>
+                <div id="algorithmChartContainer" class="chart-container-medium">
+                    <canvas id="algorithmChart"></canvas>
+                </div>
+                <p id="noChartMessage" style="display: none;">
+                    This algorithm is conceptual and does not produce a chart.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
